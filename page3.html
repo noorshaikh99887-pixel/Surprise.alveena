@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surprise ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('alveena-bg.jpg') no-repeat center center/cover;
+      overflow: hidden;
+    }
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+    }
+    .text {
+      position: relative;
+      z-index: 1;
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 48px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 
+        -2px -2px 0 #ff4da6,
+         2px -2px 0 #ff4da6,
+        -2px  2px 0 #ff4da6,
+         2px  2px 0 #ff4da6;
+      display: flex;
+      gap: 15px;
+    }
+    .word {
+      opacity: 0;
+      animation: floatIn 2s ease forwards;
+    }
+    .word:nth-child(1) { animation-delay: 0s; transform: translateX(-200px); }
+    .word:nth-child(2) { animation-delay: 0.5s; transform: translateY(-200px); }
+    .word:nth-child(3) { animation-delay: 1s; transform: translateX(200px); }
+    .word:nth-child(4) { animation-delay: 1.5s; transform: translateY(200px); }
+
+    @keyframes floatIn {
+      to {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
+      }
+    }
+
+    /* Sab words ko 2s baad line me arrange karna */
+    .text.final {
+      animation: alignLine 1s ease forwards;
+      animation-delay: 2.5s;
+    }
+    @keyframes alignLine {
+      to { justify-content: center; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="text" id="animatedText">
+    <span class="word">I</span>
+    <span class="word">Love</span>
+    <span class="word">You</span>
+    <span class="word">Alveena</span>
+  </div>
+
+  <script>
+    // 2.5s ke baad sab ek line me aa jayenge
+    setTimeout(() => {
+      document.getElementById("animatedText").classList.add("final");
+    }, 2500);
+  </script>
+</body>
+</html>
